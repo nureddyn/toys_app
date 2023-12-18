@@ -5,6 +5,7 @@ const app = express();
 app.set("view engine", "jsx");
 app.engine("jsx", require("express-react-views").createEngine());
 
+
 app.use(express.urlencoded({extended: false})); 
 app.use((req, res, next) => {
 	console.log('I run for all routes')
@@ -12,7 +13,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('<h1>Hello World!</h1>');
+  res.render('Home');
 });
 
 
