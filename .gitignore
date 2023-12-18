@@ -1,0 +1,5 @@
+# Environment variables
+.env
+
+# Framework Modules:
+/node_modules
