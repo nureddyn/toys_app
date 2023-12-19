@@ -34,7 +34,17 @@ app.get('/', (req, res) => {
 
 
 app.get('/:id', (req, res) => {
-  res.render('Category', {category: categories[req.params.id]});
+  toy.find({name: categories[req.params.id]})
+  .then((foundToys) => {
+    res.render('Category', {category: categories[req.params.id], toys: foundToys});  
+  })
+  .catch((error) => {
+    res.render('Category', {category: categories[req.params.id], error});
+  })
+  .finally(() => {
+    db.close();
+  });
+  // res.render('Category', {category: categories[req.params.id], toys: categoryToys});
 });
 
 
