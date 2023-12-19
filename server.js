@@ -5,15 +5,21 @@ const app = express();
 app.set("view engine", "jsx");
 app.engine("jsx", require("express-react-views").createEngine());
 
+const categories = require('./models/categories');
 
 app.use(express.urlencoded({extended: false})); 
 app.use((req, res, next) => {
-	console.log('I run for all routes')
 	next();
 });
 
 app.get('/', (req, res) => {
   res.render('Home');
+});
+
+
+app.get('/:id', (req, res) => {
+  res.render('Category', {category: categories[req.params.id]});
+  // res.send(req.params.id);
 });
 
 
