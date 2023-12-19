@@ -33,8 +33,20 @@ app.get('/', (req, res) => {
 });
 
 
+app.get('/new', (req, res) => {
+  res.render('NewToy', {categories: categories});
+});
+
+app.post('/new', (req, res) => {
+  // console.log(req.body.category);
+  toy.create(req.body, (error, createdToy) => {
+    res.redirect('/');
+  });
+});
+
+
 app.get('/:id', (req, res) => {
-  toy.find({name: categories[req.params.id]})
+  toy.find({category: categories[req.params.id].name})
   .then((foundToys) => {
     res.render('Category', {category: categories[req.params.id], toys: foundToys});  
   })

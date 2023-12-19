@@ -10,10 +10,15 @@ export default function Category({ category, toys }) {
       {toys ?
         <ul>
           {toys.map((toy, i) => {
-            <li key={i}>
-              <p>{toy.name}</p>
-              <p>${String(toy.price)}</p>
-            </li>
+            return (
+              <li key={i}>
+                <p>{toy.name}</p>
+                <p>${String(toy.price)}</p>
+                {toy.image &&
+                  <img src={toy.image} alt={`${toy.name} image`} />
+                }
+              </li>
+            )
           })}
         </ul>
       : "No toys found"}
