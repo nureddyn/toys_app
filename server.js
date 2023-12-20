@@ -37,13 +37,6 @@ app.get('/new', (req, res) => {
   res.render('NewToy', {categories: categories});
 });
 
-app.post('/new', (req, res) => {
-  // console.log(req.body.category);
-  toy.create(req.body, (error, createdToy) => {
-    res.redirect('/');
-  });
-});
-
 
 app.get('/:id', (req, res) => {
   toy.find({category: categories[req.params.id].name})
@@ -53,11 +46,27 @@ app.get('/:id', (req, res) => {
   .catch((error) => {
     res.render('Category', {category: categories[req.params.id], error});
   })
-  .finally(() => {
-    db.close();
-  });
+  // .finally(() => {
+  //   db.close();
+  // });
   // res.render('Category', {category: categories[req.params.id], toys: categoryToys});
 });
+
+app.post('/new', (req, res) => {
+  // console.log(req.body.category);
+  toy.create(req.body)
+  .then((createdToy) => {
+    console.log(createdToy);
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+  // .finally(() => {
+  //   db.close();
+  // });
+  res.redirect('/');
+});
+
 
 
 app.listen(3000, () => {

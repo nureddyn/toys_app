@@ -35,6 +35,29 @@ const styles = {
     categoryImage: {
         width: '100%',
         height: '100%',
+    },
+    toyList: {
+        display: 'flex',
+        // alignItems: 'flex-start',
+        width: '100%',
+        height: '70%',
+        // border: 'solid black 1px',
+        overflowX: 'auto',
+        whiteSpace: 'nowrap',
+        // overflow: 'scroll',
+    },
+    toyElement: {
+        // border: 'solid black 1px',
+        // display: 'block',
+        width: '100%',
+        height: '40%',
+        marginRight: '10%',
+
+    },
+    toyImage: {
+        width: '20em',
+        height: 'auto',
+
     }
 }
 

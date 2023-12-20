@@ -6,7 +6,7 @@ export default function NewToy({ categories }) {
   return (
     <div style={styles.page}>
       <HeaderNav />
-      <form action='/new' method='POST'>
+      <form autoComplete='off' action='/new' method='POST'>
         Name: <input type="text" name='name' />
 
         <label htmlFor='category'>Category</label>

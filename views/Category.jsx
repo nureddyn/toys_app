@@ -8,19 +8,19 @@ export default function Category({ category, toys }) {
       <HeaderNav />
       <h1 style={styles.title}>{category.name}</h1>
       {toys ?
-        <ul>
+        <div style={styles.toyList}>
           {toys.map((toy, i) => {
             return (
-              <li key={i}>
-                <p>{toy.name}</p>
-                <p>${String(toy.price)}</p>
+              <div style={styles.toyElement} key={i}>
+                <h4 style={{textWrap: 'balance', fontSize: '1.5em'}}>{toy.name}</h4>
+                <p>Price: ${String(toy.price)}</p>
                 {toy.image &&
-                  <img src={toy.image} alt={`${toy.name} image`} />
+                  <img style={styles.toyImage} src={toy.image} alt={`${toy.name} image`} />
                 }
-              </li>
+              </div>
             )
           })}
-        </ul>
+        </div>
       : "No toys found"}
     </div>
   )
