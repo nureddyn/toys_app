@@ -7,8 +7,10 @@ const styles = {
     header: {
         display: 'flex',
         justifyContent: 'space-around',
+        alignItems: 'center',
         top: '0',
         width: '100%',
+        height: '5em',
         border: 'solid black 1px',
         color: 'white',
         background: '#CC231E',
@@ -30,25 +32,50 @@ const styles = {
         display: 'block',
         height: '100%',
         width: '20%',
-        border: 'solid black 1px',
+        // border: 'solid black 1px',
     },
     categoryImage: {
         width: '100%',
         height: '100%',
     },
+    wishPage: {
+        width: '100%',
+        height: 'auto',
+        background: '#235E6F',
+    },
+    wishList: {
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        marginLeft: '10%',
+        // border: 'solid black 1px',
+
+    },
+    wishElement: {
+        // border: 'solid black 1px',
+        borderRadius: '50px',
+        width: '30%',
+        height: '40%',
+        marginRight: '10%',
+        marginBottom: '5%',
+        background: '#1d4e5c',
+
+    },
+    wishImage: {
+        width: '10em',
+        height: 'auto',
+    },
     toyList: {
         display: 'flex',
-        // alignItems: 'flex-start',
         width: '100%',
         height: '70%',
         // border: 'solid black 1px',
         overflowX: 'auto',
         whiteSpace: 'nowrap',
-        // overflow: 'scroll',
     },
     toyElement: {
         // border: 'solid black 1px',
-        // display: 'block',
         width: '100%',
         height: '40%',
         marginRight: '10%',
@@ -57,7 +84,17 @@ const styles = {
     toyImage: {
         width: '20em',
         height: 'auto',
-
+    },
+    form: {
+        display: 'block',
+        // border: 'solid black 1px',
+        height: '30%',
+        padding: '10%',
+        paddingLeft: '25%',
+        color: 'white',
+    },
+    formFirst: {
+        marginBottom: '5%',
     }
 }
 

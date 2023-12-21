@@ -22,6 +22,7 @@ db.on("close", () => console.log("mongo disconnected"));
 
 const categories = require('./models/categories');
 const toy = require('./models/Toy.js'); 
+const Wish = require('./models/Wish.js');
 
 app.use(express.urlencoded({extended: false})); 
 app.use((req, res, next) => {
@@ -35,6 +36,39 @@ app.get('/', (req, res) => {
 
 app.get('/new', (req, res) => {
   res.render('NewToy', {categories: categories});
+});
+
+app.post('/new', (req, res) => {
+  toy.create(req.body)
+  .then((createdToy) => {
+    console.log(createdToy);
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+  res.redirect('/');
+});
+
+app.get('/wish', (req, res) => {
+  Wish.find({})
+  .then((foundWishes) => {
+    res.render('Wishes', {wishes: foundWishes});
+  })
+  .catch((error) => {
+    res.render('Wishes');
+  })
+  // res.render('Wishes');
+});
+
+app.post('/wish', (req, res) => {
+  Wish.create(req.body)
+  .then((createdWish) => {
+    console.log(createdWish);
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+  res.redirect('/wish');
 });
 
 
@@ -51,22 +85,6 @@ app.get('/:id', (req, res) => {
   // });
   // res.render('Category', {category: categories[req.params.id], toys: categoryToys});
 });
-
-app.post('/new', (req, res) => {
-  // console.log(req.body.category);
-  toy.create(req.body)
-  .then((createdToy) => {
-    console.log(createdToy);
-  })
-  .catch((error) => {
-    console.log(error);
-  })
-  // .finally(() => {
-  //   db.close();
-  // });
-  res.redirect('/');
-});
-
 
 
 app.listen(3000, () => {

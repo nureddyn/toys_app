@@ -12,6 +12,15 @@ export default function Category({ category, toys }) {
           {toys.map((toy, i) => {
             return (
               <div style={styles.toyElement} key={i}>
+
+                <form action="/wish" method='POST'>
+                  <input hidden type="text" value={toy.name} name="name" />
+                  <input hidden type="text" value={toy.price} name="price" />
+                  <input hidden type="text" value={toy.image} name="image" />
+                  <input hidden type="text" value={toy.storeURL} name='storeURL' />
+                  <button type="submit">Add to wishes</button>
+                </form>
+                
                 <h4 style={{textWrap: 'balance', fontSize: '1.5em'}}>{toy.name}</h4>
                 <p>Price: ${String(toy.price)}</p>
                 {toy.image &&
