@@ -46,7 +46,9 @@ app.post('/new', (req, res) => {
   .catch((error) => {
     console.log(error);
   })
-  res.redirect('/');
+  setTimeout(() => {
+    res.redirect('/');
+  }, 1000)
 });
 
 app.get('/wish', (req, res) => {

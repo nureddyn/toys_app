@@ -23,7 +23,12 @@ const categories = [
         name: 'Building',
         image: 'https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/81FD17qSO0L.jpg',
         anchor: '',
-    }
+    },
+    {
+        name: 'Educational',
+        image: 'https://target.scene7.com/is/image/Target/GUEST_af8bd353-396f-4f2c-8497-86c92ba0f3e8?wid=1200&hei=1200&qlt=80&fmt=webp',
+        anchor: '',
+    },
 ]
 
 module.exports = categories;

@@ -11,7 +11,7 @@ export default function Categories() {
           return (
               <div key={i} style={styles.category}>
                 <h2>{category.name}</h2>
-                <div>
+                <div style={styles.categoryImageContainer}>
                   <a href={`/${i}`}>
                     <img style={styles.categoryImage} src={category.image} alt="Toy Image" />
                   </a>

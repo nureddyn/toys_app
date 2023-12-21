@@ -22,9 +22,11 @@ export default function Category({ category, toys }) {
                 </form>
                 
                 <h4 style={{textWrap: 'balance', fontSize: '1.5em'}}>{toy.name}</h4>
-                <p>Price: ${String(toy.price)}</p>
+                <p style={styles.goldColor}>Price: ${String(toy.price)}</p>
                 {toy.image &&
-                  <img style={styles.toyImage} src={toy.image} alt={`${toy.name} image`} />
+                  <a target='_blank' href={toy.storeURL}>
+                    <img style={styles.toyImage} src={toy.image} alt={`${toy.name} image`} />
+                  </a>
                 }
               </div>
             )

@@ -3,6 +3,7 @@ const styles = {
         width: '100%',
         height: '800px',
         background: '#235E6F',
+        fontFamily: 'sans-serif',
     },
     header: {
         display: 'flex',
@@ -21,27 +22,50 @@ const styles = {
     },
     a: {
         color: 'white',
+        textDecoration: 'none',
+        border: 'solid black 2px',
+        // borderRadius: '10px',
+        padding: '5px',
+        background: '#0F8A5F',
     },
     categories: {
         display: 'flex',
-        justifyContent: 'flex-start',
-        border: 'solid black 1px',
-        height: '45%',
+        justifyContent: 'space-between',
+        // border: 'solid black 1px',
+        height: '50%',
+        width: '100%',
+        overflowX: 'auto',
+        whiteSpace: 'nowrap',
+
+        // display: 'flex',
+        // width: '100%',
+        // height: '70%',
+        // border: 'solid black 1px',
+        // overflowX: 'auto',
+        // whiteSpace: 'nowrap',
+
     },
     category: {
         display: 'block',
-        height: '100%',
-        width: '20%',
+        height: '60%',
+        width: '100%',
         // border: 'solid black 1px',
+        marginRight: '5%',
+        paddingRight: '5em',
+        paddingLeft: '5em',
+        textAlign: 'center',
+    },
+    categoryImageContainer: {
+        width: '150%',
     },
     categoryImage: {
-        width: '100%',
-        height: '100%',
+        width: '15em',
     },
     wishPage: {
         width: '100%',
         height: 'auto',
         background: '#235E6F',
+        fontFamily: 'sans-serif',
     },
     wishList: {
         display: 'flex',
@@ -53,6 +77,7 @@ const styles = {
 
     },
     wishElement: {
+        display: 'flex',
         // border: 'solid black 1px',
         borderRadius: '50px',
         width: '30%',
@@ -63,8 +88,10 @@ const styles = {
 
     },
     wishImage: {
+        // alignSelf: 'flex-end',
         width: '10em',
         height: 'auto',
+        borderRadius: '50px',
     },
     toyList: {
         display: 'flex',
@@ -79,11 +106,11 @@ const styles = {
         width: '100%',
         height: '40%',
         marginRight: '10%',
-
     },
     toyImage: {
         width: '20em',
         height: 'auto',
+        borderRadius: '50px',
     },
     form: {
         display: 'block',
@@ -95,7 +122,11 @@ const styles = {
     },
     formFirst: {
         marginBottom: '5%',
-    }
+    },
+    goldColor: {
+        color: 'gold',
+        fontWeight: '900',
+    } 
 }
 
 module.exports = styles;
