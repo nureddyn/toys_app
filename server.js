@@ -5,6 +5,9 @@ const app = express();
 app.set("view engine", "jsx");
 app.engine("jsx", require("express-react-views").createEngine());
 
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 const mongoose = require('mongoose');
 const db = mongoose.connection;
 const mongoURI = process.env.MONGO_URI;
@@ -28,6 +31,8 @@ app.use(express.urlencoded({extended: false}));
 app.use((req, res, next) => {
 	next();
 });
+
+
 
 app.get('/', (req, res) => {
   res.render('Home');
@@ -59,7 +64,6 @@ app.get('/wish', (req, res) => {
   .catch((error) => {
     res.render('Wishes');
   })
-  // res.render('Wishes');
 });
 
 app.post('/wish', (req, res) => {
@@ -74,6 +78,13 @@ app.post('/wish', (req, res) => {
 });
 
 
+app.delete('/remove/:id', (req, res) => {
+  Wish.findByIdAndRemove(req.params.id, (error, data) => {
+    res.redirect('/wish');
+  });
+});
+
+
 app.get('/:id', (req, res) => {
   toy.find({category: categories[req.params.id].name})
   .then((foundToys) => {
@@ -82,10 +93,6 @@ app.get('/:id', (req, res) => {
   .catch((error) => {
     res.render('Category', {category: categories[req.params.id], error});
   })
-  // .finally(() => {
-  //   db.close();
-  // });
-  // res.render('Category', {category: categories[req.params.id], toys: categoryToys});
 });
 
 

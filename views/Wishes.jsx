@@ -13,11 +13,17 @@ export default function Wishes({ wishes }) {
             <div style={styles.wishElement} key={index}>
               <h4 style={{textWrap: 'balance', fontSize: '1.5em'}}>{toy.name}</h4>
               <p style={styles.goldColor}>Price: ${String(toy.price)}</p>
-              {toy.image &&
-                <a target='_blank' href={toy.storeURL}>
-                  <img style={styles.wishImage} src={toy.image} alt={`${toy.name} image`} />
-                </a>
-              }
+              <div style={styles.imageBlock}>
+                {toy.image &&
+                  <a target='_blank' href={toy.storeURL}>
+                    <img style={styles.wishImage} src={toy.image} alt={`${toy.name} image`} />
+                  </a>
+                }
+                <form style={styles.formy} action={`/remove/${toy._id}?_method=DELETE`} method='POST'>
+                  <input hidden type="text" value={toy.name} name="name" />
+                  <button style={styles.formyButton} type="submit">Remove from wishes</button>
+              </form>
+              </div>
             </div>
           )
         })}

@@ -60,6 +60,8 @@ const styles = {
     },
     categoryImage: {
         width: '15em',
+        border: 'solid black 2px',
+        borderRadius: '30px',
     },
     wishPage: {
         width: '100%',
@@ -78,21 +80,37 @@ const styles = {
     },
     wishElement: {
         display: 'flex',
-        // border: 'solid black 1px',
+        border: 'solid black 1px',
         borderRadius: '50px',
-        width: '30%',
+        width: '35%',
         height: '40%',
         marginRight: '10%',
         marginBottom: '5%',
         background: '#1d4e5c',
 
     },
+    imageBlock: {
+        display: 'block',
+        // border: 'solid black 1px',        
+    },
     wishImage: {
         // alignSelf: 'flex-end',
         width: '10em',
         height: 'auto',
         borderRadius: '50px',
+        // border: 'solid black 1px',
     },
+    formy: {
+        // border: 'solid black 1px',
+        height: '2em',
+        width: '9em',
+    },
+    formyButton: {
+        height: '100%',
+        borderRadius: '20px',
+        background: '#358fa9',
+    },
+
     toyList: {
         display: 'flex',
         width: '100%',
