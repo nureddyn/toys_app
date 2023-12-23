@@ -7,6 +7,7 @@ export default function HeaderNav() {
       <a style={styles.a} href="/">Home</a>
       <a style={styles.a} href="/wish">Your Wishes</a>
       <a style={styles.a} href="/new">Add New Toy</a>
+      <a style={styles.a} href="/edit">Edit Toy</a>
     </div>
   )
 }

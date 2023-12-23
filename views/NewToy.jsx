@@ -6,6 +6,7 @@ export default function NewToy({ categories }) {
   return (
     <div style={styles.page}>
       <HeaderNav />
+      <h1 style={styles.title}>Save New Toy</h1>
       <form autoComplete='off' action='/new' method='POST'>
         <div style={styles.form}>
           <div style={styles.formFirst}>

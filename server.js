@@ -26,6 +26,7 @@ db.on("close", () => console.log("mongo disconnected"));
 const categories = require('./models/categories');
 const toy = require('./models/Toy.js'); 
 const Wish = require('./models/Wish.js');
+const Toy = require('./models/Toy.js');
 
 app.use(express.urlencoded({extended: false})); 
 app.use((req, res, next) => {
@@ -53,8 +54,101 @@ app.post('/new', (req, res) => {
   })
   setTimeout(() => {
     res.redirect('/');
-  }, 1000)
+  }, 3000)
 });
+
+
+app.get('/edit',(req, res) => {
+  Toy.find({})
+  .then((foundToys) => {
+    res.render('EditToy', {toys: foundToys});
+  })
+  .catch((error) => {
+    res.send(error);
+  })
+});
+
+
+
+app.post('/edit', (req, res) => {
+  // console.log(req.body.name);
+  if (req.body.newName && req.body.newPrice) {
+    Toy.findOneAndUpdate(
+      {name: req.body.name},
+      {$set: {name: req.body.newName, price: req.body.newPrice}},
+      {new: true}
+      )
+    .then((toy) => {
+      console.log({toy});
+
+      Wish.findOneAndUpdate(
+        {name: req.body.name},
+        {$set: {name: req.body.newName, price: req.body.newPrice}},
+        {new: true}
+        )
+      .then((toy) => {
+        console.log({toy});  
+      })
+      .catch((error) => {
+        res.json({error});
+      })
+    })
+    .catch((error) => {
+      res.json({error});
+    })
+  } else if (req.body.newName && !req.body.newPrice) {
+    Toy.findOneAndUpdate(
+      {name: req.body.name},
+      {name: req.body.newName},
+      {new: true}
+      )
+    .then((toy) => {
+      console.log({toy});
+
+      Wish.findOneAndUpdate(
+        {name: req.body.name},
+        {name: req.body.newName},
+        {new: true}
+        )
+      .then((toy) => {
+        console.log({toy});  
+      })
+      .catch((error) => {
+        res.json({error});
+      })
+    })
+    .catch((error) => {
+      res.json({error});
+    })
+  } else if (req.body.newPrice && !req.body.newName) {
+    Toy.findOneAndUpdate(
+      {name: req.body.name},
+      {price: req.body.newPrice},
+      {new: true}
+      )
+    .then((toy) => {
+      console.log({toy});
+
+      Wish.findOneAndUpdate(
+        {name: req.body.name},
+        {price: req.body.newPrice},
+        {new: true}
+        )
+      .then((toy) => {
+        console.log({toy});  
+      })
+      .catch((error) => {
+        res.json({error});
+      })
+    })
+    .catch((error) => {
+      res.json({error});
+    })
+  }
+  res.redirect('/edit');
+});
+
+
 
 app.get('/wish', (req, res) => {
   Wish.find({})
@@ -86,13 +180,15 @@ app.delete('/remove/:id', (req, res) => {
 
 
 app.get('/:id', (req, res) => {
-  toy.find({category: categories[req.params.id].name})
-  .then((foundToys) => {
-    res.render('Category', {category: categories[req.params.id], toys: foundToys});  
-  })
-  .catch((error) => {
-    res.render('Category', {category: categories[req.params.id], error});
-  })
+  if (categories[req.params.id]) {
+    toy.find({category: categories[req.params.id].name})
+    .then((foundToys) => {
+      res.render('Category', {category: categories[req.params.id], toys: foundToys});  
+    })
+    .catch((error) => {
+      res.render('Category', {category: categories[req.params.id], error});
+    })
+  }
 });
 
 
