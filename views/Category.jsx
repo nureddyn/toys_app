@@ -18,7 +18,7 @@ export default function Category({ category, toys }) {
                   <input hidden type="text" value={toy.price} name="price" />
                   <input hidden type="text" value={toy.image} name="image" />
                   <input hidden type="text" value={toy.storeURL} name='storeURL' />
-                  <button type="submit">Add to wishes</button>
+                  <button style={styles.formyButton} type="submit">Add to wishes</button>
                 </form>
                 
                 <h4 style={{textWrap: 'balance', fontSize: '1.5em'}}>{toy.name}</h4>
